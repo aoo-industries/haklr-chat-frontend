@@ -36,6 +36,7 @@ export default class fullScreen extends Vue {}
     background: blue;
   }
   &.two {
+    position: relative;
     grid-column-start: 2;
     background: lightgray;
   }

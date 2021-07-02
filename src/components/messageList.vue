@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="messages" class="box">
+    <div v-if="messages" class="box" >
       <div v-for="(message, id) in messages" :key="id">
         <div class="message">
           <message
@@ -36,15 +36,16 @@ export default class MessageList extends Vue {
 .box {
   display: flex;
   position: relative;
-  gap: 1rem;
+  gap: 1rem;  
   flex-direction: column;
 
-  padding: 5rem 3rem 0 3rem ;
+  padding: 5rem 3rem 3rem 3rem ;
   .message {
     .content {
       width: 25rem;
       border-radius: 0.5rem;
-      padding: 1rem
+      padding: 1rem;
+      word-break: break-word;
     }
     .me {
       float: right;

@@ -1,14 +1,15 @@
 <template>
   <div>
     <div class="input">
-      <input type="text" class="message-space" />
-      <send-icon />
+      <input type="text" class="message-space" v-model="message" v-on:keyup.enter="send" />
+      <send-icon @click="send" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { sendMessage } from "@/services/msg.service"
 import { SendIcon } from "vue-feather-icons";
 
 @Component({
@@ -16,7 +17,14 @@ import { SendIcon } from "vue-feather-icons";
     SendIcon,
   },
 })
-export default class messageInput extends Vue {}
+export default class messageInput extends Vue {
+  private message = ""
+
+  public send() {
+    sendMessage(this.message)
+    this.message = ""
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -26,10 +34,9 @@ export default class messageInput extends Vue {}
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 1178px;
+  width: calc(100% - 2rem);
   height: 3rem;
-  position: absolute;
-
+  padding: 0.3rem 1rem;
   .message-space {
     width: inherit;
     height: -webkit-fill-available;

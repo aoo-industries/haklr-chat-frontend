@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-if="messages" class="box" >
-      <div v-for="(message, id) in messages" :key="id">
+    <div v-if="messages" class="box">
+      <div v-for="(message, i) in messages" :key="i">
         <div class="message">
           <message
-            :class="`content ${message.side ? 'them' : 'me'}`"
+            :class="`content ${message.author.id === 1 ? 'them' : 'me'}`"
             :content="message.content"
-            :author="message.author"
-            :time="message.time"
+            :author="message.author.username"
+            :time="0"
           />
         </div>
       </div>
@@ -29,6 +29,9 @@ import Message from "@/components/message.vue";
 })
 export default class MessageList extends Vue {
   @Prop({ required: false }) messages!: Message[];
+  mounted() {
+    console.log(this.messages);
+  }
 }
 </script>
 
@@ -36,10 +39,10 @@ export default class MessageList extends Vue {
 .box {
   display: flex;
   position: relative;
-  gap: 1rem;  
+  gap: 1rem;
   flex-direction: column;
 
-  padding: 5rem 3rem 3rem 3rem ;
+  padding: 5rem 3rem 3rem 3rem;
   .message {
     .content {
       width: 25rem;

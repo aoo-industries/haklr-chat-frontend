@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { sendMessage } from "@/services/msg.service"
+import { sendMessage } from "@/services/server.service"
 import { SendIcon } from "vue-feather-icons";
 
 @Component({
@@ -21,7 +21,7 @@ export default class messageInput extends Vue {
   private message = ""
 
   public send() {
-    sendMessage(this.message)
+    sendMessage(this.message, '6')
     this.message = ""
   }
 }

@@ -2,7 +2,7 @@
   <div class="grid">
     <div class="column one"></div>
     <div class="column two">
-      <history message="kfdigjhh" />
+      <history :groupId="'6'" />
     </div>
     <div class="column three"></div>
   </div>

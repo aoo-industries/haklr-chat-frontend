@@ -1,6 +1,8 @@
 <template>
   <div class="grid">
-    <div class="column one"></div>
+    <div class="column one">
+      <group-list />
+    </div>
     <div class="column two">
       <history :groupId="'6'" />
     </div>
@@ -11,10 +13,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import History from "@/views/History.vue";
+import GroupList from "@/views/GroupList.vue"
 
 @Component({
   components: {
     History,
+    GroupList
   },
 })
 export default class fullScreen extends Vue {}

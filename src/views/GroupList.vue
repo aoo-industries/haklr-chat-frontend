@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div v-if="groups.length > 0">
+    <div v-if="groups != null && groups.length > 0">
       <div v-for="group in groups" :key="group.id">
-        <group
-          :message="group.lastMessage ? group.lastMessage.content : 'No Message'"
-          :name="group.name"
-          :time="group.lastMessage ? group.lastMessage.sentAt : 0"
-        />
+        <div @click="setGroup(group.id)">
+          <group
+            :message="
+              group.lastMessage ? group.lastMessage.content : 'No Message'
+            "
+            :name="group.name"
+            :time="group.lastMessage ? group.lastMessage.sentAt : 0"
+          />
+        </div>
       </div>
     </div>
 
@@ -45,8 +49,13 @@ export default class GroupList extends Vue {
   async createGroup() {
     await createGroup(this.newGroupName);
   }
+  setGroup(groupId: string) {
+    console.log("Emmiting changeGroup,", groupId);
+
+    this.$emit("changeGroup", groupId);
+  }
   logout() {
-      logout()
+    logout();
   }
 }
 </script>

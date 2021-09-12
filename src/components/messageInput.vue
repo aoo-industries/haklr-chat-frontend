@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="input">
-      <input type="text" class="message-space" v-model="message" v-on:keyup.enter="send" />
+      <input
+        type="text"
+        class="message-space"
+        v-model="message"
+        v-on:keyup.enter="send"
+      />
       <send-icon @click="send" />
     </div>
   </div>
@@ -9,20 +14,26 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { sendMessage } from "@/services/server.service"
+import { sendMessage } from "@/services/server.service";
 import { SendIcon } from "vue-feather-icons";
 
 @Component({
   components: {
     SendIcon,
   },
+  props: {
+    groupId: {
+      type: String,
+    },
+  },
 })
 export default class messageInput extends Vue {
-  private message = ""
+  private message = "";
+  private groupId!: string
 
   public send() {
-    sendMessage(this.message, '6')
-    this.message = ""
+    sendMessage(this.message, this.groupId);
+    this.message = "";
   }
 }
 </script>
@@ -40,7 +51,7 @@ export default class messageInput extends Vue {
   .message-space {
     width: inherit;
     height: -webkit-fill-available;
-    margin: 0 2rem 0  0
+    margin: 0 2rem 0 0;
   }
 }
 </style>

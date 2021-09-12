@@ -1,10 +1,10 @@
 <template>
   <div class="grid">
     <div class="column one">
-      <group-list />
+      <group-list @changeGroup="changeGroup"/>
     </div>
     <div class="column two">
-      <history :groupId="'6'" />
+      <history :groupId="groupId" />
     </div>
     <div class="column three"></div>
   </div>
@@ -21,13 +21,20 @@ import GroupList from "@/views/GroupList.vue"
     GroupList
   },
 })
-export default class fullScreen extends Vue {}
+export default class fullScreen extends Vue {
+  groupId = '0'
+  changeGroup(data: string | number) {
+    console.log("Changing groups...", data);
+    
+    this.groupId = data.toString()
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .grid {
   display: grid;
-  grid-template-columns: 20rem auto 25rem;
+  grid-template-columns: 20rem auto 5rem;
   position: absolute;
   top: 0;
   bottom: 0;

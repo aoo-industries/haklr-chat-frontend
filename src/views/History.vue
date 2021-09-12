@@ -1,12 +1,17 @@
 <template>
   <div class="history">
-    <message-list v-if="Messages" :messages="Messages" class="msgss" v-chat-scroll />
-    <message-input class="bottom" />
+    <message-list
+      v-if="Messages"
+      :messages="Messages"
+      class="msgss"
+      v-chat-scroll
+    />
+    <message-input class="bottom" :groupId="groupId"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import messageList from "@/components/messageList.vue";
 import messageInput from "@/components/messageInput.vue";
 import { getGroups, getMessages } from "@/services/server.service";
@@ -24,14 +29,22 @@ import { getGroups, getMessages } from "@/services/server.service";
 })
 export default class History extends Vue {
   private groupId!: string;
+  sendGroup = "0"
 
   private Messages: any = 0
     
+  @Watch('groupId') async onNewGroup() {
+    this.sendGroup = this.groupId
+    await this.getMessages()
+  }
   
   async mounted() {
-    this.Messages =  await getMessages(this.groupId);
+    await this.getMessages()
     console.log(this.Messages);
     
+  }
+  async getMessages() {
+        this.Messages =  await getMessages(this.groupId);
   }
 }
 </script>

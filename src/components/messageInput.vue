@@ -32,6 +32,7 @@ export default class messageInput extends Vue {
   private groupId!: string
 
   public send() {
+    if(this.message.length < 1) return alert("Blank messages are not permitted.")
     sendMessage(this.message, this.groupId);
     this.message = "";
   }

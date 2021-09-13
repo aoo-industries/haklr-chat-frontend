@@ -32,6 +32,7 @@ export default class History extends Vue {
   sendGroup = "0"
 
   private Messages: any = 0
+  public a: any
     
   @Watch('groupId') async onNewGroup() {
     this.sendGroup = this.groupId
@@ -40,14 +41,18 @@ export default class History extends Vue {
   
   async mounted() {
     await this.getMessages()
-    setInterval(async () => {
+    this.a = setInterval(async () => {
       await this.getMessages()
-    }, 500)
+    }, 789)
     console.log(this.Messages);
     
   }
   async getMessages() {
-    if(Number(this.groupId) != 0) this.Messages =  await getMessages(this.groupId);
+    if(Number(this.groupId) !== -1) this.Messages =  await getMessages(this.groupId);
+  }
+
+  beforeDestroy() {
+    clearInterval(this.a)
   }
 }
 </script>
@@ -56,7 +61,8 @@ export default class History extends Vue {
 .history {
   display: grid;
   grid-template-rows: auto 3.6rem;
-  height: 100vh;
+  //height: 100vh;
+  height: 67vw;
 }
 .msgss {
   grid-row-start: 1;

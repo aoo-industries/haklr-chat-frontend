@@ -26,7 +26,7 @@ import GroupDetail from "@/views/GroupDetail.vue"
   },
 })
 export default class fullScreen extends Vue {
-  groupId = '0'
+  groupId = '-1'
   info = {
     members: [],
     name: "",
@@ -46,7 +46,7 @@ export default class fullScreen extends Vue {
 <style lang="scss" scoped>
 .grid {
   display: grid;
-  grid-template-columns: 17rem auto 20rem;
+  grid-template-columns: 17rem auto 15rem;
   position: absolute;
   top: 0;
   bottom: 0;

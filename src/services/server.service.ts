@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://192.168.1.37:3000/";
+axios.defaults.baseURL = "http://localhost:3000/";
 import router from "../router";
 let userid = localStorage.getItem('id') || 0
 let token = "";

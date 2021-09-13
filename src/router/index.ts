@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import fullScreen from '../layouts/fullScreen.vue'
+import fullScreen from '../layouts/mobile.vue'
 import login from '../layouts/login.vue'
 import test from '../layouts/test.vue'
 

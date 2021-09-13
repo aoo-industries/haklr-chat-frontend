@@ -1,11 +1,11 @@
 <template>
   <div>
     <span class="heading">Users</span>
-    <ol class="users">
+    <ul class="users">
       <li class="user" v-for="user in users" :key="user.id">
-        {{ user.username }}
+        {{ user.username }} ({{ user.id }})
       </li>
-    </ol>
+    </ul>
     <br />
     <input type="text" placeholder="Add User Id" v-model="nUser" />
     <button @click="add">Add</button>
@@ -23,6 +23,8 @@ export default class Users extends Vue {
   private nUser = "";
 
   async add() {
+        if(this.nUser.length < 1) return alert("Blank user ids are not permitted.")
+
       await newUser(this.nUser, this.id)
   }
 }

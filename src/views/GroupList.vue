@@ -48,7 +48,7 @@ import Group from "@/components/group.vue";
 export default class GroupList extends Vue {
   private groups: any = null;
   private newGroupName = "";
-  private currentGroup = "0";
+  private currentGroup = "-1";
   public a: any
 
   async mounted() {

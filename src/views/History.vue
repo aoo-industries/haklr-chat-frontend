@@ -14,7 +14,7 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import messageList from "@/components/messageList.vue";
 import messageInput from "@/components/messageInput.vue";
-import { getGroups, getMessages } from "@/services/server.service";
+import { getMessages } from "@/services/server.service";
 
 @Component({
   components: {
@@ -61,8 +61,7 @@ export default class History extends Vue {
 .history {
   display: grid;
   grid-template-rows: auto 3.6rem;
-  //height: 100vh;
-  height: 74vh;
+  height: 100vh;
 }
 .msgss {
   grid-row-start: 1;

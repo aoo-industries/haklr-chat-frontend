@@ -46,8 +46,7 @@ export default class MessageList extends Vue {
   position: relative;
   gap: 1rem;
   flex-direction: column;
-  padding-top: 3rem;
-  //padding: 5rem 3rem 3rem 3rem;
+  padding: 5rem 3rem 3rem 3rem;
   .message {
     .content {
       width: 25rem;

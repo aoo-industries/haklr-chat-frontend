@@ -1,13 +1,14 @@
 <template>
   <div>
+
     <div v-if="messages" class="box">
       <div v-for="(message, i) in messages" :key="i">
         <div class="message">
           <message
-            :class="`content ${message.author.id === 1 ? 'them' : 'me'}`"
+            :class="`content ${message.author.id == idd ? 'me' : 'them'}`"
             :content="message.content"
             :author="message.author.username"
-            :time="0"
+            :time="message.sentAt"
           />
         </div>
       </div>
@@ -21,6 +22,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Message from "@/components/message.vue";
+import { getUserId } from "@/services/server.service"
 
 @Component({
   components: {
@@ -31,6 +33,9 @@ export default class MessageList extends Vue {
   @Prop({ required: false }) messages!: Message[];
   mounted() {
     console.log(this.messages);
+  }
+  get idd() {
+    return getUserId()
   }
 }
 </script>

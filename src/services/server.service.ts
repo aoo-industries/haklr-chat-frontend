@@ -1,6 +1,7 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3000/";
+axios.defaults.baseURL = "http://192.168.1.37:3000/";
 import router from "../router";
+let userid = localStorage.getItem('id') || 0
 let token = "";
 const getToken = async () => {
   const checkToken = token || localStorage.getItem('token')
@@ -30,6 +31,16 @@ export const getMessages = async (groupId: string) => {
   ).data;
 };
 
+export const newUser = async (userId: string, groupId: string) => {
+  return ( await axios.post(`/chats/${groupId}/user`, { userId }, await getConfig())).data
+}
+
+export const getUserId = () => {
+  console.log(userid);
+  
+  return userid
+}
+
 export const sendMessage = async (message: string, groupId: string) => {
   return (
     await axios.post(
@@ -47,7 +58,10 @@ export const login = async (username: string, password: string) => {
   )).data;
   if (result.token) {
     token = result.token
+    userid = result.user.id
     localStorage.setItem('token', result.token)
+    localStorage.setItem('id', result.user.id)
+
     return result.user
   } else {
     return result

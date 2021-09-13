@@ -49,11 +49,10 @@ export default class Group extends Vue {
 
 <style lang="scss" scoped>
 .group {
-  height: 7rem;
+  height: 5.77rem;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: white;
   .message {
     width: 100%;
     display: flex;

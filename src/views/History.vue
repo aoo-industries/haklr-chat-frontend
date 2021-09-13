@@ -40,11 +40,14 @@ export default class History extends Vue {
   
   async mounted() {
     await this.getMessages()
+    setInterval(async () => {
+      await this.getMessages()
+    }, 500)
     console.log(this.Messages);
     
   }
   async getMessages() {
-        this.Messages =  await getMessages(this.groupId);
+    if(Number(this.groupId) != 0) this.Messages =  await getMessages(this.groupId);
   }
 }
 </script>

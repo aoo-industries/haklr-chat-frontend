@@ -62,7 +62,7 @@ export default class History extends Vue {
   display: grid;
   grid-template-rows: auto 3.6rem;
   //height: 100vh;
-  height: 67vw;
+  height: 74vh;
 }
 .msgss {
   grid-row-start: 1;

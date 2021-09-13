@@ -75,8 +75,8 @@ export default class mobile extends Vue {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 42vw;
-  height: 67vw;
+  width: 33vw;
+  height: 74vh;
 
   border: 5px solid grey
 }
